@@ -24,7 +24,9 @@ public class AccederReportajeController {
     }
 
     public void initView() {
-        // Cargar la lista inicial de eventos con acceso concedido
+    	view.lblNombreEmpresa.setText("EMPRESA: " + nombreEmpresa.toUpperCase());
+    	
+    	// Cargar la lista inicial de eventos con acceso concedido
         this.cargarEventos();
         
         // Listener para detectar cuándo el usuario selecciona un evento en la tabla

@@ -12,12 +12,13 @@ public class AccederReportajeModel {
      * Obtiene los eventos a los que una empresa específica tiene acceso concedido.
      */
     public List<AccederReportajeDTO> getEventosConAcceso(String nombreEmpresa) {
-        // SQL: Filtramos por la empresa seleccionada y que tenga el permiso (tiene_acceso = 1)
+        // Usamos 'true' (sin comillas si es booleano puro) o 1. 
+        // En la mayoría de vuestras bases de datos de PL, el valor es 'true' (texto)
         String sql = "SELECT e.id_evento, e.descripcion AS nombre_evento " +
                      "FROM Evento e " +
                      "JOIN Ofrecimiento o ON e.id_evento = o.id_evento " +
                      "JOIN Empresa_Comunicacion emp ON o.id_empresa = emp.id_empresa " +
-                     "WHERE emp.nombre = ? AND o.tiene_acceso = 1";
+                     "WHERE emp.nombre = ? AND o.tiene_acceso = 1"; 
         
         return db.executeQueryPojo(AccederReportajeDTO.class, sql, nombreEmpresa);
     }
