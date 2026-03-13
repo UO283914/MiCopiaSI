@@ -113,3 +113,69 @@ INSERT INTO Ofrecimiento (id_evento, id_empresa, estado, tiene_acceso) VALUES (2
 INSERT INTO Ofrecimiento (id_evento, id_empresa, estado, tiene_acceso) VALUES (21, 4, 'ACEPTADO', false);
 INSERT INTO Ofrecimiento (id_evento, id_empresa, estado, tiene_acceso) VALUES (21, 5, 'ACEPTADO', false);
 
+
+-- ===== EJEMPLOS DE LAS NUEVAS TABLAS/CAMPOS =====
+
+-- Temáticas nuevas
+INSERT INTO Tematica (id_tematica, nombre) VALUES (1, 'Politica');
+INSERT INTO Tematica (id_tematica, nombre) VALUES (2, 'Economia');
+INSERT INTO Tematica (id_tematica, nombre) VALUES (3, 'Deportes');
+INSERT INTO Tematica (id_tematica, nombre) VALUES (4, 'Cultura');
+INSERT INTO Tematica (id_tematica, nombre) VALUES (5, 'Tecnologia');
+
+-- Relación Reportero <-> Temática
+INSERT INTO Reportero_Tematica (id_reportero, id_tematica) VALUES (1, 1);
+INSERT INTO Reportero_Tematica (id_reportero, id_tematica) VALUES (2, 2);
+INSERT INTO Reportero_Tematica (id_reportero, id_tematica) VALUES (3, 1);
+INSERT INTO Reportero_Tematica (id_reportero, id_tematica) VALUES (4, 2);
+INSERT INTO Reportero_Tematica (id_reportero, id_tematica) VALUES (5, 3);
+INSERT INTO Reportero_Tematica (id_reportero, id_tematica) VALUES (6, 4);
+INSERT INTO Reportero_Tematica (id_reportero, id_tematica) VALUES (10, 5);
+
+-- Relación Evento <-> Temática
+INSERT INTO Evento_Tematica (id_evento, id_tematica) VALUES (1, 1);
+INSERT INTO Evento_Tematica (id_evento, id_tematica) VALUES (2, 1);
+INSERT INTO Evento_Tematica (id_evento, id_tematica) VALUES (4, 3);
+INSERT INTO Evento_Tematica (id_evento, id_tematica) VALUES (5, 4);
+INSERT INTO Evento_Tematica (id_evento, id_tematica) VALUES (11, 5);
+INSERT INTO Evento_Tematica (id_evento, id_tematica) VALUES (20, 4);
+
+-- Relación Empresa <-> Temática
+INSERT INTO Empresa_Tematica (id_empresa, id_tematica) VALUES (1, 1);
+INSERT INTO Empresa_Tematica (id_empresa, id_tematica) VALUES (1, 2);
+INSERT INTO Empresa_Tematica (id_empresa, id_tematica) VALUES (2, 3);
+INSERT INTO Empresa_Tematica (id_empresa, id_tematica) VALUES (3, 1);
+INSERT INTO Empresa_Tematica (id_empresa, id_tematica) VALUES (4, 4);
+INSERT INTO Empresa_Tematica (id_empresa, id_tematica) VALUES (5, 3);
+INSERT INTO Empresa_Tematica (id_empresa, id_tematica) VALUES (6, 5);
+
+-- Ejemplos de precio en Evento
+UPDATE Evento SET precio = 120.50 WHERE id_evento = 1;
+UPDATE Evento SET precio = 250.00 WHERE id_evento = 4;
+UPDATE Evento SET precio = 80.00 WHERE id_evento = 11;
+
+-- Ejemplos de estado_revision en Reportaje
+UPDATE Reportaje SET estado_revision = 'EN_REVISION' WHERE id_reportaje = 1;
+UPDATE Reportaje SET estado_revision = 'REVISADO' WHERE id_reportaje = 2;
+UPDATE Reportaje SET estado_revision = 'ENTREGADO' WHERE id_reportaje = 3;
+
+-- Comentarios de revisión
+INSERT INTO Comentario_Revision (id_comentario, id_reportaje, id_reportero, comentario, fecha_hora)
+VALUES (1, 1, 2, 'Falta confirmar la cifra total de ayudas.', '2026-03-11 11:00:00');
+INSERT INTO Comentario_Revision (id_comentario, id_reportaje, id_reportero, comentario, fecha_hora)
+VALUES (2, 1, 9, 'Añadir contexto historico en el segundo párrafo.', '2026-03-11 12:10:00');
+INSERT INTO Comentario_Revision (id_comentario, id_reportaje, id_reportero, comentario, fecha_hora)
+VALUES (3, 2, 10, 'Buen enfoque, revisar ortografía en el cierre.', '2026-03-16 10:00:00');
+
+-- Multimedia asociada a reportajes
+INSERT INTO Multimedia (id_multimedia, id_reportaje, id_reportero, tipo, ruta, estado)
+VALUES (1, 1, 1, 'IMAGEN', '/media/reportaje1/portada.jpg', 'DEFINITIVO');
+INSERT INTO Multimedia (id_multimedia, id_reportaje, id_reportero, tipo, ruta, estado)
+VALUES (2, 1, 5, 'VIDEO', '/media/reportaje1/corte-entrevista.mp4', 'BORRADOR');
+INSERT INTO Multimedia (id_multimedia, id_reportaje, id_reportero, tipo, ruta, estado)
+VALUES (3, 4, 5, 'IMAGEN', '/media/reportaje4/fidma-publico.jpg', 'DEFINITIVO');
+
+-- Ejemplos de descargado en Ofrecimiento
+UPDATE Ofrecimiento SET descargado = true WHERE id_evento = 1 AND id_empresa = 1;
+UPDATE Ofrecimiento SET descargado = true WHERE id_evento = 4 AND id_empresa = 4;
+UPDATE Ofrecimiento SET descargado = false WHERE id_evento = 20 AND id_empresa = 2;
