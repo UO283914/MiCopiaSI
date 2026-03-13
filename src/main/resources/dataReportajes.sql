@@ -10,18 +10,18 @@ INSERT INTO Empresa_Comunicacion (id_empresa, nombre, email) VALUES (4, 'La Nuev
 INSERT INTO Empresa_Comunicacion (id_empresa, nombre, email) VALUES (5, 'TeleAsturias', 'informativos@teleasturias.tv');
 INSERT INTO Empresa_Comunicacion (id_empresa, nombre, email) VALUES (6, 'El Comercio', 'noticias@elcomercio.es');
 
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (1, 'Ana Blanco', '600111222', 1);
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (2, 'Matias Prats', '600333444', 1);
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (3, 'Lois Lane', '600555666', 2);
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (4, 'Clark Kent', '600777888', 2);
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (5, 'Peter Parker', '600999000', 3);
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (6, 'Eddie Brock', '600123456', 3);
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (7, 'Sara Carbonero', '600654321', 4);
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (8, 'Iñaki Gabilondo', '600987654', 4);
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (9, 'Julia Otero', '600112233', 1);
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (10, 'Jordi Evole', '600445566', 2);
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (11, 'Vicente Valles', '600111333', 1);
-INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia) VALUES (12, 'Monica Carrillo', '600222444', 2);
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (1, 'Ana Blanco', '600111222', 1, 'BASE');
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (2, 'Matias Prats', '600333444', 1, 'BASE');
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (3, 'Lois Lane', '600555666', 2, 'BASE');
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (4, 'Clark Kent', '600777888', 2, 'BASE');
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (5, 'Peter Parker', '600999000', 3, 'GRÁFICO');
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (6, 'Eddie Brock', '600123456', 3, 'CAMARÓGRAFO');
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (7, 'Sara Carbonero', '600654321', 4, 'BASE');
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (8, 'Iñaki Gabilondo', '600987654', 4, 'BASE');
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (9, 'Julia Otero', '600112233', 1, 'BASE');
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (10, 'Jordi Evole', '600445566', 2, 'BASE');
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (11, 'Vicente Valles', '600111333', 1, 'GRÁFICO');
+INSERT INTO Reportero (id_reportero, nombre, telefono, id_agencia, tipo_reportero) VALUES (12, 'Monica Carrillo', '600222444', 2, 'CAMARÓGRAFO');
 
 
 INSERT INTO Evento (id_evento, descripcion, fecha, id_agencia) VALUES (1, 'Rueda de prensa del Alcalde', '2026-03-10', 1);
