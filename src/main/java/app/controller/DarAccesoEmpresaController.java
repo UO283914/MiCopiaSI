@@ -129,12 +129,11 @@ public class DarAccesoEmpresaController {
 	}
 
 	private void actualizarTablaEmpresas() {
-		TableModel tm = SwingUtil.getTableModelFromPojos(empresasMemoria, new String[]{"nombre", "acceso", "descarga"});
+		TableModel tm = SwingUtil.getTableModelFromPojos(empresasMemoria, new String[]{"idEmpresa", "nombre", "acceso", "descarga"});
 		view.getTabEmpresas().setModel(tm);
-		view.getTabEmpresas().setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+		view.getTabEmpresas().getColumnModel().getColumn(0).setMinWidth(0);
+		view.getTabEmpresas().getColumnModel().getColumn(0).setMaxWidth(0);
 		view.getTabEmpresas().setRowHeight(25);
-		view.getTabEmpresas().getColumnModel().getColumn(0).setPreferredWidth(184);
-		view.getTabEmpresas().getColumnModel().getColumn(1).setPreferredWidth(184);
-		view.getTabEmpresas().getColumnModel().getColumn(2).setPreferredWidth(184);
+		SwingUtil.autoAdjustColumns(view.getTabEmpresas());
 	}
 }
