@@ -133,10 +133,7 @@ public class DarAccesoEmpresaController {
 		view.getTabEmpresas().setModel(tm);
 		view.getTabEmpresas().getColumnModel().getColumn(0).setMinWidth(0);
 		view.getTabEmpresas().getColumnModel().getColumn(0).setMaxWidth(0);
-		view.getTabEmpresas().setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
 		view.getTabEmpresas().setRowHeight(25);
-		view.getTabEmpresas().getColumnModel().getColumn(1).setPreferredWidth(260);
-		view.getTabEmpresas().getColumnModel().getColumn(2).setPreferredWidth(120);
-		view.getTabEmpresas().getColumnModel().getColumn(3).setPreferredWidth(174);
+		SwingUtil.autoAdjustColumns(view.getTabEmpresas());
 	}
 }
