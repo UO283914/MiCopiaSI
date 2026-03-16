@@ -33,6 +33,8 @@ public class AsignacionReporterosController {
         view.getCbFiltroEventos().addActionListener(e -> SwingUtil.exceptionWrapper(() -> cargarEventosPorFiltro()));
         view.getCbFiltroTematicaReporteros().addActionListener(
                 e -> SwingUtil.exceptionWrapper(() -> cargarDetallesEvento()));
+        view.getCbFiltroTipoReportero().addActionListener(
+                e -> SwingUtil.exceptionWrapper(() -> cargarDetallesEvento()));
 
         view.getTabEventos().addMouseListener(new MouseAdapter() {
             @Override
@@ -88,9 +90,10 @@ public class AsignacionReporterosController {
             Integer idEvento = (Integer) view.getTabEventos().getValueAt(filaSeleccionada, 0);
             String fecha = (String) view.getTabEventos().getValueAt(filaSeleccionada, 2);
             boolean soloEspecializados = view.getCbFiltroTematicaReporteros().getSelectedIndex() == 1;
+            String tipoReportero = (String) view.getCbFiltroTipoReportero().getSelectedItem();
 
             reporterosDisponiblesVisualmente = model.getReporterosDisponibles(fecha, nombreAgencia, idEvento,
-                    soloEspecializados);
+                    soloEspecializados, tipoReportero);
             reporterosAsignadosVisualmente = model.getReporterosAsignados(idEvento);
 
             actualizarTablaDisponiblesVisualmente();

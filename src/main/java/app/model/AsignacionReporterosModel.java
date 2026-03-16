@@ -40,7 +40,7 @@ public class AsignacionReporterosModel {
 
 	// 3. Reporteros disponibles en la fecha, opcionalmente filtrados por temática del evento
 	public List<ReporteroDisplayDTO> getReporterosDisponibles(String fechaEvento, String nombreAgencia,
-			Integer idEvento, boolean soloEspecializados) {
+			Integer idEvento, boolean soloEspecializados, String tipoReportero) {
 		StringBuilder sql = new StringBuilder(
 				"SELECT r.id_reportero, r.nombre, "
 				+ "COALESCE(GROUP_CONCAT(DISTINCT t.nombre), 'Sin especialización') AS tematicas "
@@ -54,6 +54,8 @@ public class AsignacionReporterosModel {
 				+ "   WHERE e.fecha = ? AND asig.id_reportero = r.id_reportero"
 				+ ") ");
 
+		sql.append("AND UPPER(COALESCE(r.tipo_reportero, 'BASE')) = UPPER(?) ");
+
 		if (soloEspecializados) {
 			sql.append("AND EXISTS ("
 					+ "   SELECT 1 FROM Reportero_Tematica rt2 "
@@ -65,9 +67,10 @@ public class AsignacionReporterosModel {
 		sql.append("GROUP BY r.id_reportero, r.nombre");
 
 		if (soloEspecializados) {
-			return db.executeQueryPojo(ReporteroDisplayDTO.class, sql.toString(), nombreAgencia, fechaEvento, idEvento);
+			return db.executeQueryPojo(ReporteroDisplayDTO.class, sql.toString(), nombreAgencia, fechaEvento, tipoReportero,
+					idEvento);
 		}
-		return db.executeQueryPojo(ReporteroDisplayDTO.class, sql.toString(), nombreAgencia, fechaEvento);
+		return db.executeQueryPojo(ReporteroDisplayDTO.class, sql.toString(), nombreAgencia, fechaEvento, tipoReportero);
 	}
 
 	// 4. Reporteros que YA están asignados a este evento

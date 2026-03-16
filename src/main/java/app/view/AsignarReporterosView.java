@@ -26,6 +26,7 @@ public class AsignarReporterosView extends JFrame {
 	private JLabel lblNombreAgencia;
 	private JComboBox<String> cbFiltroEventos;
 	private JComboBox<String> cbFiltroTematicaReporteros;
+	private JComboBox<String> cbFiltroTipoReportero;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -72,8 +73,19 @@ public class AsignarReporterosView extends JFrame {
 		cbFiltroTematicaReporteros = new JComboBox<String>();
 		cbFiltroTematicaReporteros.setModel(new DefaultComboBoxModel(
 				new String[] { "Todos los disponibles", "Solo especializados en temática del evento" }));
-		cbFiltroTematicaReporteros.setBounds(545, 45, 363, 22);
+		cbFiltroTematicaReporteros.setBounds(545, 45, 220, 22);
 		contentPane.add(cbFiltroTematicaReporteros);
+
+		JLabel lblFiltroTipoReportero = new JLabel("Tipo:");
+		lblFiltroTipoReportero.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFiltroTipoReportero.setBounds(775, 45, 40, 20);
+		contentPane.add(lblFiltroTipoReportero);
+
+		cbFiltroTipoReportero = new JComboBox<String>();
+		cbFiltroTipoReportero
+				.setModel(new DefaultComboBoxModel<>(new String[] { "GRÁFICO", "CAMARÓGRAFO", "BASE" }));
+		cbFiltroTipoReportero.setBounds(815, 45, 120, 22);
+		contentPane.add(cbFiltroTipoReportero);
 
 		JLabel lblNewLabel_1 = new JLabel("Eventos");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -134,6 +146,7 @@ public class AsignarReporterosView extends JFrame {
 	public JButton getBtnAceptar() { return btnAceptar; }
 	public JComboBox<String> getCbFiltroEventos() { return cbFiltroEventos; }
 	public JComboBox<String> getCbFiltroTematicaReporteros() { return cbFiltroTematicaReporteros; }
+	public JComboBox<String> getCbFiltroTipoReportero() { return cbFiltroTipoReportero; }
 	public JFrame getFrame() { return this; }
 	public JLabel getLblTituloAgencia() { return this.lblNombreAgencia; }
 }
