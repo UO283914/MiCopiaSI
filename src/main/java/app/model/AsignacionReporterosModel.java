@@ -54,10 +54,7 @@ public class AsignacionReporterosModel {
 				+ "   WHERE e.fecha = ? AND asig.id_reportero = r.id_reportero"
 				+ ") ");
 
-		boolean filtrarPorTipo = tipoReportero != null && !"TODOS".equalsIgnoreCase(tipoReportero);
-		if (filtrarPorTipo) {
-			sql.append("AND UPPER(COALESCE(r.tipo_reportero, 'BASE')) = UPPER(?) ");
-		}
+		sql.append("AND UPPER(COALESCE(r.tipo_reportero, 'BASE')) = UPPER(?) ");
 
 		if (soloEspecializados) {
 			sql.append("AND EXISTS ("
@@ -70,16 +67,10 @@ public class AsignacionReporterosModel {
 		sql.append("GROUP BY r.id_reportero, r.nombre, r.tipo_reportero");
 
 		if (soloEspecializados) {
-			if (filtrarPorTipo) {
-				return db.executeQueryPojo(ReporteroDisplayDTO.class, sql.toString(), nombreAgencia, fechaEvento,
-						tipoReportero, idEvento);
-			}
-			return db.executeQueryPojo(ReporteroDisplayDTO.class, sql.toString(), nombreAgencia, fechaEvento, idEvento);
+			return db.executeQueryPojo(ReporteroDisplayDTO.class, sql.toString(), nombreAgencia, fechaEvento, tipoReportero,
+					idEvento);
 		}
-		if (filtrarPorTipo) {
-			return db.executeQueryPojo(ReporteroDisplayDTO.class, sql.toString(), nombreAgencia, fechaEvento, tipoReportero);
-		}
-		return db.executeQueryPojo(ReporteroDisplayDTO.class, sql.toString(), nombreAgencia, fechaEvento);
+		return db.executeQueryPojo(ReporteroDisplayDTO.class, sql.toString(), nombreAgencia, fechaEvento, tipoReportero);
 	}
 
 	// 4. Reporteros que YA están asignados a este evento

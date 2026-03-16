@@ -73,18 +73,18 @@ public class AsignarReporterosView extends JFrame {
 		cbFiltroTematicaReporteros = new JComboBox<String>();
 		cbFiltroTematicaReporteros.setModel(new DefaultComboBoxModel(
 				new String[] { "Todos los disponibles", "Solo especializados en temática del evento" }));
-		cbFiltroTematicaReporteros.setBounds(545, 45, 255, 22);
+		cbFiltroTematicaReporteros.setBounds(545, 45, 220, 22);
 		contentPane.add(cbFiltroTematicaReporteros);
 
 		JLabel lblFiltroTipoReportero = new JLabel("Tipo:");
 		lblFiltroTipoReportero.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblFiltroTipoReportero.setBounds(810, 45, 40, 20);
+		lblFiltroTipoReportero.setBounds(775, 45, 40, 20);
 		contentPane.add(lblFiltroTipoReportero);
 
 		cbFiltroTipoReportero = new JComboBox<String>();
 		cbFiltroTipoReportero
-				.setModel(new DefaultComboBoxModel<>(new String[] { "TODOS", "GRÁFICO", "CAMARÓGRAFO", "BASE" }));
-		cbFiltroTipoReportero.setBounds(850, 45, 170, 22);
+				.setModel(new DefaultComboBoxModel<>(new String[] { "GRÁFICO", "CAMARÓGRAFO", "BASE" }));
+		cbFiltroTipoReportero.setBounds(815, 45, 120, 22);
 		contentPane.add(cbFiltroTipoReportero);
 
 		JLabel lblNewLabel_1 = new JLabel("Eventos");
