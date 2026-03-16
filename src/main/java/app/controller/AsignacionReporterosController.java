@@ -160,7 +160,7 @@ public class AsignacionReporterosController {
 
     private void actualizarTablaAsignadosVisualmente() {
         TableModel tmodel = SwingUtil.getTableModelFromPojos(reporterosAsignadosVisualmente,
-                new String[] { "idReportero", "nombre", "tematicas" });
+                new String[] { "idReportero", "nombre", "tipoReportero", "tematicas" });
         view.getTabAsignados().setModel(tmodel);
         view.getTabAsignados().getColumnModel().getColumn(0).setMinWidth(0);
         view.getTabAsignados().getColumnModel().getColumn(0).setMaxWidth(0);
@@ -169,7 +169,7 @@ public class AsignacionReporterosController {
 
     private void actualizarTablaDisponiblesVisualmente() {
         TableModel tmodel = SwingUtil.getTableModelFromPojos(reporterosDisponiblesVisualmente,
-                new String[] { "idReportero", "nombre", "tematicas" });
+                new String[] { "idReportero", "nombre", "tipoReportero", "tematicas" });
         view.getTabDisponibles().setModel(tmodel);
         view.getTabDisponibles().getColumnModel().getColumn(0).setMinWidth(0);
         view.getTabDisponibles().getColumnModel().getColumn(0).setMaxWidth(0);

@@ -42,7 +42,7 @@ public class AsignacionReporterosModel {
 	public List<ReporteroDisplayDTO> getReporterosDisponibles(String fechaEvento, String nombreAgencia,
 			Integer idEvento, boolean soloEspecializados, String tipoReportero) {
 		StringBuilder sql = new StringBuilder(
-				"SELECT r.id_reportero, r.nombre, "
+				"SELECT r.id_reportero, r.nombre, UPPER(COALESCE(r.tipo_reportero, 'BASE')) AS tipo_reportero, "
 				+ "COALESCE(GROUP_CONCAT(DISTINCT t.nombre), 'Sin especialización') AS tematicas "
 				+ "FROM Reportero r "
 				+ "JOIN Agencia a ON r.id_agencia = a.id_agencia "
@@ -64,7 +64,7 @@ public class AsignacionReporterosModel {
 					+ ") ");
 		}
 
-		sql.append("GROUP BY r.id_reportero, r.nombre");
+		sql.append("GROUP BY r.id_reportero, r.nombre, r.tipo_reportero");
 
 		if (soloEspecializados) {
 			return db.executeQueryPojo(ReporteroDisplayDTO.class, sql.toString(), nombreAgencia, fechaEvento, tipoReportero,
@@ -75,14 +75,14 @@ public class AsignacionReporterosModel {
 
 	// 4. Reporteros que YA están asignados a este evento
 	public List<ReporteroDisplayDTO> getReporterosAsignados(Integer idEvento) {
-		String sql = "SELECT r.id_reportero, r.nombre, "
+		String sql = "SELECT r.id_reportero, r.nombre, UPPER(COALESCE(r.tipo_reportero, 'BASE')) AS tipo_reportero, "
 				+ "COALESCE(GROUP_CONCAT(DISTINCT t.nombre), 'Sin especialización') AS tematicas "
 				+ "FROM Reportero r "
 				+ "JOIN Asignacion a ON r.id_reportero = a.id_reportero "
 				+ "LEFT JOIN Reportero_Tematica rt ON rt.id_reportero = r.id_reportero "
 				+ "LEFT JOIN Tematica t ON t.id_tematica = rt.id_tematica "
 				+ "WHERE a.id_evento = ? "
-				+ "GROUP BY r.id_reportero, r.nombre";
+				+ "GROUP BY r.id_reportero, r.nombre, r.tipo_reportero";
 		return db.executeQueryPojo(ReporteroDisplayDTO.class, sql, idEvento);
 	}
 

@@ -43,7 +43,7 @@ public class AsignarReporterosView extends JFrame {
 
 	public AsignarReporterosView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 960, 600);
+		setBounds(100, 100, 1040, 640);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -104,36 +104,36 @@ public class AsignarReporterosView extends JFrame {
 		contentPane.add(lblNewLabel_2);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(410, 105, 244, 246);
+		scrollPane_1.setBounds(410, 105, 292, 246);
 		contentPane.add(scrollPane_1);
 		tabDisponibles = new JTable();
 		scrollPane_1.setViewportView(tabDisponibles);
 
 		btnAsignar = new JButton("Asignar");
-		btnAsignar.setBounds(410, 365, 244, 23);
+		btnAsignar.setBounds(410, 365, 292, 23);
 		contentPane.add(btnAsignar);
 
 		JLabel lblNewLabel_3 = new JLabel("Reporteros Asignados");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_3.setBounds(670, 80, 242, 14);
+		lblNewLabel_3.setBounds(718, 80, 242, 14);
 		contentPane.add(lblNewLabel_3);
 
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(670, 105, 238, 246);
+		scrollPane_2.setBounds(718, 105, 302, 246);
 		contentPane.add(scrollPane_2);
 		tabAsignados = new JTable();
 		scrollPane_2.setViewportView(tabAsignados);
 
 		btnEliminar = new JButton("Eliminar Asignación");
-		btnEliminar.setBounds(670, 365, 238, 23);
+		btnEliminar.setBounds(718, 365, 302, 23);
 		contentPane.add(btnEliminar);
 
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(797, 527, 111, 23);
+		btnCancelar.setBounds(909, 577, 111, 23);
 		contentPane.add(btnCancelar);
 
 		btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(670, 527, 117, 23);
+		btnAceptar.setBounds(782, 577, 117, 23);
 		contentPane.add(btnAceptar);
 	}
 
